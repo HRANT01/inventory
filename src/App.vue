@@ -5,10 +5,8 @@
         <SelectedItems />
       </div>
 
-      <div v-if="selectedRightItem" class="selected-right-item">
-        <div class="selectedRightItem">
-          {{ selectedRightItem.name }}
-        </div>
+      <div v-if="selectedRightItem" class="selectedRightItem">
+        {{ selectedRightItem.name }}
       </div>
       <div v-else class="no-selection">No item selected.</div>
     </div>
@@ -19,11 +17,7 @@
       </div>
 
       <div class="right-block">
-        <RightItems
-          :rightItems="rightItems"
-          :setRightItem="setRightItem"
-          :selectedRightItem="selectedRightItem"
-        />
+        <RightItems />
       </div>
     </div>
   </div>
@@ -35,8 +29,6 @@ import ItemList from "./components/ItemsList.vue";
 import SelectedItems from "./components/SelectedItem.vue";
 import RightItems from "./components/RightItems.vue";
 import { computed } from "vue";
-
-const { rightItems, setRightItem } = useItemStore();
 
 const selectedRightItem = computed(() => useItemStore().getSelectedRightItem);
 </script>
@@ -63,20 +55,8 @@ const selectedRightItem = computed(() => useItemStore().getSelectedRightItem);
   min-width: 40%;
 }
 
-.selected-right-item {
-  min-width: 40%;
-}
-
+.selectedRightItem,
 .no-selection {
-  border: 5px solid black;
-  color: white;
-  padding: 10px;
-  border-radius: 5px;
-  text-align: center;
-  min-width: 40%;
-}
-
-.selectedRightItem {
   border: 5px solid black;
   color: white;
   padding: 10px;

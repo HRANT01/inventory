@@ -3,9 +3,9 @@
     <div v-for="item in rightItems" :key="item.id" class="item">
       <button
         @click="setRightItem(item)"
-        :class="{
-          selected: selectedRightItem && selectedRightItem.id === item.id,
-        }"
+        :class="[
+          { selected: selectedRightItem && selectedRightItem.id === item.id },
+        ]"
       >
         {{ item.name }}
       </button>
@@ -19,21 +19,6 @@ import { useItemStore } from "../store/items";
 
 const { rightItems, setRightItem } = useItemStore();
 const selectedRightItem = computed(() => useItemStore().getSelectedRightItem);
-
-defineProps({
-  rightItems: {
-    type: Array,
-    required: true,
-  },
-  setRightItem: {
-    type: Function,
-    required: true,
-  },
-  selectedRightItem: {
-    type: Object,
-    required: true,
-  },
-});
 </script>
 
 <style scoped>
@@ -46,5 +31,14 @@ defineProps({
   background-color: #00a97f;
   color: white;
   border: none;
+}
+
+.selectedRightItem {
+  border: 5px solid black;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  min-width: 40%;
 }
 </style>
